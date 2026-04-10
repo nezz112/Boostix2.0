@@ -135,7 +135,19 @@
             <h3>Add New Account</h3>
             <input type="text" id="add-title" placeholder="Account Title (e.g. Mythic | 150 Skins)">
             <input type="text" id="add-desc" placeholder="Short Description">
-            <input type="text" id="add-img" placeholder="Image URL (e.g. https://imgur.com/yourimage.jpg)">
+            <input type="file" accept="image/*" id="imageUpload">
+
+<img id="preview" width="200" />
+
+<script>
+document.getElementById("imageUpload").addEventListener("change", function(event) {
+    const file = event.target.files[0];
+    if (file) {
+        const preview = document.getElementById("preview");
+        preview.src = URL.createObjectURL(file);
+    }
+});
+</script>
             <input type="number" id="add-price" placeholder="Price (USD)">
             <select id="add-status">
                 <option value="available">Available</option>
